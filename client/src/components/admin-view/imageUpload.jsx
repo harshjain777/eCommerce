@@ -1,16 +1,16 @@
 
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Input } from '../ui/input';
 import { Label } from '@radix-ui/react-label';
 import { FileIcon, UploadCloudIcon, XIcon } from 'lucide-react';
 import { Button } from '../ui/button';
+import axios from 'axios';
 
 function ImageUpload({file,setFile,uploadedURL,setUploadedURL}) {
 
     const inputRef = useRef(null)
 
     const handleOnImageUp = (e)=>{
-        console.log(e.target.files);
         const selectedFile = e.target.files?.[0]
         if(selectedFile){
             setFile(selectedFile)
@@ -23,7 +23,6 @@ function ImageUpload({file,setFile,uploadedURL,setUploadedURL}) {
     const handleDrop = (e)=>{
       e.preventDefault();
       const dropedFile = e.dataTransfer.files?.[0];
-      console.log(dropedFile);
       
       if(dropedFile){
         setFile(dropedFile)
@@ -36,6 +35,19 @@ function ImageUpload({file,setFile,uploadedURL,setUploadedURL}) {
         inputRef.current.value = '';
       }
     }
+
+    const uploadFileImgtoCloudinary = async()=>{
+      const data = new FormData()
+      data.append('my_file',file)
+      const res = await axios.post('http://localhost:8000/api/admin/products/upload-img',data)
+      console.log(res.data,"img got uploadedd loolol");
+      
+      if(res) setUploadedURL(res.data)
+    }
+
+    useEffect(()=>{
+      if(file!=null) uploadFileImgtoCloudinary
+    },[file])
 
   return (
     <div className='w-full  max-w-md mx-auto'>
