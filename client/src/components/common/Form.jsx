@@ -29,45 +29,56 @@ function CommonForm({
             id={controlItem.name}
             type={controlItem.type}
             value={value}
-            onChange={event=>setFormData({...formData,[controlItem.name]: event.target.value,})}
+            onChange={(event) =>
+              setFormData({
+                ...formData,
+                [controlItem.name]: event.target.value,
+              })
+            }
           />
         );
 
         break;
       case "select":
         element = (
-          <Select onValueChange={(value)=>setFormData({...formData,[controlItem.name]:value,})} value={value}>
+          <Select
+            onValueChange={(value) =>
+              setFormData({
+                ...formData,
+                [controlItem.name]: value,
+              })
+            }
+            value={value}
+          >
             <SelectTrigger className="w-full">
-              <SelectValue placeholder={controlItem.placeholder}></SelectValue>
-              <SelectContent>
-                {controlItem.options && controlItem.options.length > 0
-                  ? controlItem.options.map((optionItem) => (
-                      <SelectItem id={optionItem.id} value={optionItem.value}>
-                        {optionItem.label}
-                      </SelectItem>
-                    ))
-                  : null}
-              </SelectContent>
+              <SelectValue placeholder={controlItem.placeholder} />
             </SelectTrigger>
+            <SelectContent>
+              {controlItem.options?.map((optionItem) => (
+                <SelectItem key={optionItem.id} value={optionItem.value}>
+                  {optionItem.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
           </Select>
         );
 
         break;
-        case "textarea":
-          element = (
-            <Textarea
-              name={controlItem.name}
-              placeholder={controlItem.placeholder}
-              id={controlItem.id}
-              value={value}
-              onChange={(event) =>
-                setFormData({
-                  ...formData,
-                  [controlItem.name]: event.target.value,
-                })
-              }
-            />
-          );
+      case "textarea":
+        element = (
+          <Textarea
+            name={controlItem.name}
+            placeholder={controlItem.placeholder}
+            id={controlItem.id}
+            value={value}
+            onChange={(event) =>
+              setFormData({
+                ...formData,
+                [controlItem.name]: event.target.value,
+              })
+            }
+          />
+        );
 
         break;
 
@@ -79,7 +90,12 @@ function CommonForm({
             id={controlItem.name}
             type={controlItem.componentType}
             value={value}
-            onChange={event=>setFormData({...formData,[controlItem.name]: event.target.value,})}
+            onChange={(event) =>
+              setFormData({
+                ...formData,
+                [controlItem.name]: event.target.value,
+              })
+            }
           />
         );
         break;
@@ -96,7 +112,10 @@ function CommonForm({
           </div>
         ))}
       </div>
-      <Button className="mt-2 w-full  bg-white text-black hover:bg-zinc-200" type="submit">
+      <Button
+        className="mt-2 w-full  bg-white text-black hover:bg-zinc-200"
+        type="submit"
+      >
         {buttonText || "submit"}
       </Button>
     </form>
