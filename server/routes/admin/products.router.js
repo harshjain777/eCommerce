@@ -4,6 +4,6 @@ const { handleImagUpload } = require('../../controllers/admin/product.controller
 
 const router = express.Router()
 
-router.post('/upload-img',upload.single("my_file"), handleImagUpload)
+router.post("/upload-img",upload.single("my_file"), handleImagUpload)
 
 module.exports = router

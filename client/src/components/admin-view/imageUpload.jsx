@@ -39,7 +39,7 @@ function ImageUpload({file,setFile,uploadedURL,setUploadedURL}) {
     const uploadFileImgtoCloudinary = async()=>{
       const data = new FormData()
       data.append('my_file',file)
-      const res = await axios.post('http://localhost:8000/api/admin/products/upload-img',data)
+      const res = await axios.post('http://localhost:8000/api/admin/products//upload-img',data)
       console.log(res.data,"img got uploadedd loolol");
       
       if(res) setUploadedURL(res.data)
