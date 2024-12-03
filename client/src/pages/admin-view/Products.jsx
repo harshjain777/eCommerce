@@ -20,6 +20,7 @@ function AdminProducts() {
   const [formData,setFormData] = useState(initFormData)
   const [imageFile,setImageFile] = useState(null);
   const [uploadedURL,setUploadedURL] = useState('')
+  const [imageLoading,setImageLoading] = useState(false)
   const onSubmit = ()=>{
 
   }
@@ -35,7 +36,7 @@ function AdminProducts() {
           <SheetHeader>
             <SheetTitle className='capitalize text-xl text-white'>add new products</SheetTitle>
           </SheetHeader>
-          <ImageUpload file={imageFile} setFile={setImageFile} uploadedURL={uploadedURL} setUploadedURL={setUploadedURL}/>
+          <ImageUpload file={imageFile} setFile={setImageFile} uploadedURL={uploadedURL} setUploadedURL={setUploadedURL} setImageLoading={setImageLoading} />
           <div className="py-6 text-black">
             <CommonForm
             formControl={addProductFormElements}

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser')
 const cors = require('cors');
 const authRouter = require('./routes/auth/auth.router')
-const adminProductRouter = require('./routes/admin/products.router')
+const adminProductRouter = require('./routes/admin/products.router.js')
 
 mongoose.connect(
     "mongodb+srv://harshduggar7:harshduggar7@cluster0.02vre.mongodb.net/"
