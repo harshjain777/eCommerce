@@ -103,3 +103,36 @@ export const addProductFormElements = [
     },
   ];
 
+  export const shoppingViewHeader = [
+    {
+      id:'home',
+      lable:'Home',
+      path:'/shop/home'
+    },
+    {
+      id:'men',
+      lable:'Men',
+      path:'/shop/listing'
+    },
+    {
+      id:'women',
+      lable:'Women',
+      path:'/shop/listing'
+    },
+    {
+      id:'kids',
+      lable:'Kids',
+      path:'/shop/listing'
+    },
+    {
+      id:'footwear',
+      lable:'Footwear',
+      path:'/shop/listing'
+    },
+    {
+      id:'accessories',
+      lable:'Accessories',
+      path:'/shop/listing'
+    }
+  ]
+

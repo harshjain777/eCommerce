@@ -61,7 +61,8 @@ const login = async(req,res)=>{
             {
                 email:checkUser.email,
                 role:checkUser.role,
-                id:checkUser._id
+                id:checkUser._id,
+                userName:checkUser.userName
             },
             'password_client_for_jwt',
             {
@@ -75,7 +76,8 @@ const login = async(req,res)=>{
             user:{
                 email:checkUser.email,
                 id:checkUser._id,
-                role:checkUser.role
+                role:checkUser.role,
+                userName:checkUser.userName
             }
         })
         

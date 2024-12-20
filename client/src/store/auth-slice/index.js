@@ -16,6 +16,22 @@ export const loginUser = createAsyncThunk('auth/login',async(formData)=>{
     return response.data
 })
 
+export const logoutUser = createAsyncThunk(
+    "/auth/logout",
+  
+    async () => {
+      const response = await axios.post(
+        "http://localhost:8000/api/auth/logout",
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+  
+      return response.data;
+    }
+  );
+
 export const checkAuth = createAsyncThunk('auth/checkauth',async(formData)=>{
     const response = await axios.get('http://localhost:8000/api/auth/checkauth',{ withCredentials:true , headers:{
         'cache-control':'no-store, no-cache must-revalidate , proxy-revalidate',
