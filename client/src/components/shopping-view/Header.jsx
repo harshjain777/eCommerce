@@ -30,7 +30,7 @@ function HeaderRightContent(){
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    dispatch(logoutUser)
+    dispatch(logoutUser())
   }
 
   return <div className="flex lg:items-center lg:flex-row flex-col gap-4">
@@ -47,7 +47,7 @@ function HeaderRightContent(){
       <DropdownMenuContent side='right' className='w-56'  >
         <DropdownMenuLabel>logged is as {user.userName}</DropdownMenuLabel>
         <DropdownMenuSeparator></DropdownMenuSeparator>
-        <DropdownMenuItem><User className='mr-2 h-4 w-4' onClick={()=>navigate('/shop/account')} />Account</DropdownMenuItem>
+        <DropdownMenuItem  onClick={()=>navigate('/shop/account')}><User className='mr-2 h-4 w-4' />Account</DropdownMenuItem>
         <DropdownMenuSeparator></DropdownMenuSeparator>
         <DropdownMenuItem><LogOut className='mr-2 h-4 w-4' onClick={handleLogout}/>Logout</DropdownMenuItem>
       </DropdownMenuContent>
@@ -74,13 +74,14 @@ function ShoppingHeader() {
           </SheetTrigger>
           <SheetContent side='left' className='w-full max-w-xs '>
             <MenuItems/>
+            <HeaderRightContent/>
           </SheetContent>
         </Sheet>
         <div className="hidden lg:block">
           <MenuItems/>
         </div>
         {
-          isAuthenticated? <div><HeaderRightContent/></div>:null
+          isAuthenticated? <div className='hidden lg:block' ><HeaderRightContent/></div>:null
         }
       </div>
     </header>

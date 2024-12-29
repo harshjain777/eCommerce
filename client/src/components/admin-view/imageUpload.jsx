@@ -40,7 +40,7 @@ function ImageUpload({file,setFile,uploadedURL,setUploadedURL,setImageLoading}) 
       setImageLoading(true);
       const data = new FormData()
       data.append('my_file',file)
-      const res = await axios.post('http://localhost:8000/api/admin/products/upload-img',data)
+      const res = await axios.post('http://localhost:8000/api/admin/products/upload-image',data)
       console.log(res.data,"img got uploadedd loolol");
       
       if(res?.data?.success){
@@ -50,7 +50,7 @@ function ImageUpload({file,setFile,uploadedURL,setUploadedURL,setImageLoading}) 
   }
 
     useEffect(()=>{
-      if(file!=null) uploadFileImgtoCloudinary
+      if(file!=null) uploadFileImgtoCloudinary()
     },[file])
 
   return (

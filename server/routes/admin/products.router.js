@@ -1,9 +1,20 @@
-const express = require('express')
-const { upload } = require('../../helpers/cloudinary')
-const { handleImagUpload } = require('../../controllers/admin/product.controller')
+const express = require("express");
+const {
+ handleImagUpload,
+  addProduct,
+  editProduct,
+  fetchAllProducts,
+  deleteProduct,
+} = require("../../controllers/admin/product.controller");
 
-const router = express.Router()
+const { upload } = require("../../helpers/cloudinary");
 
-router.post("/upload-img",upload.single("my_file"), handleImagUpload)
+const router = express.Router();
 
-module.exports = router
+router.post("/upload-image", upload.single("my_file"), handleImagUpload);
+router.post("/add", addProduct);
+router.put("/edit/:id", editProduct);
+router.delete("/delete/:id", deleteProduct);
+router.get("/get", fetchAllProducts);
+
+module.exports = router;
