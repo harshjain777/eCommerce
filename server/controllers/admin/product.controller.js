@@ -61,7 +61,7 @@ const addProduct = async (req, res) => {
     console.log(e);
     res.status(500).json({
       success: false,
-      message: "Error occured",
+      message: "Error occured while adding products",
     });
   }
 };
@@ -79,7 +79,7 @@ const fetchAllProducts = async (req, res) => {
     console.log(e);
     res.status(500).json({
       success: false,
-      message: "Error occured",
+      message: "Error occured while fetching product",
     });
   }
 };
@@ -104,7 +104,7 @@ const editProduct = async (req, res) => {
     if (!findProduct)
       return res.status(404).json({
         success: false,
-        message: "Product not found",
+        message: "Product not found while editing",
       });
 
     findProduct.title = title || findProduct.title;
@@ -127,7 +127,7 @@ const editProduct = async (req, res) => {
     console.log(e);
     res.status(500).json({
       success: false,
-      message: "Error occured",
+      message: "Error occured while finding product",
     });
   }
 };
