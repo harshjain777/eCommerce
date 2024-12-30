@@ -16,10 +16,7 @@ export const loginUser = createAsyncThunk('auth/login',async(formData)=>{
     return response.data
 })
 
-export const logoutUser = createAsyncThunk(
-    "/auth/logout",
-  
-    async () => {
+export const logoutUser = createAsyncThunk("/auth/logout",async () => {
       const response = await axios.post(
         "http://localhost:8000/api/auth/logout",
         {},
@@ -82,7 +79,11 @@ const authSlice = createSlice({
             state.isLoading=false;
             state.isAuthenticated=false;
             state.user=null;
-        })
+        }).addCase(logoutUser.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.user = null;
+            state.isAuthenticated = false;
+          });
     }
 })
 export const {setUser} = authSlice.actions

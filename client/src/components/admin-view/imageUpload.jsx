@@ -5,8 +5,9 @@ import { Label } from '@radix-ui/react-label';
 import { FileIcon, UploadCloudIcon, XIcon } from 'lucide-react';
 import { Button } from '../ui/button';
 import axios from 'axios';
+import { Skeleton } from '../ui/skeleton';
 
-function ImageUpload({file,setFile,uploadedURL,setUploadedURL,setImageLoading}) {
+function ImageUpload({file,setFile,uploadedURL,setUploadedURL,setImageLoading,imageLoading}) {
 
     const inputRef = useRef(null)
 
@@ -65,6 +66,8 @@ function ImageUpload({file,setFile,uploadedURL,setUploadedURL,setImageLoading}) 
             <span className='text-zinc-500'>Drag & drop or click to upload image</span>
         </Label> 
         : (
+          imageLoading?
+          <Skeleton className='  h-32 bg-gray-200'/> :
           <div className='flex items-center justify-between px-8 '>
             <div className="flex items-center">
               <FileIcon className='w-7 h-7 text-primary  mr-2'/>
