@@ -40,7 +40,7 @@ function MenuItem({setOpen}) {
             navigate(menuItem.path)
             setOpen ? setOpen(false) : null
           }}
-          className="flex items-center font-light gap-3 px-4 py-3 text-white hover:bg-gray-800 hover:rounded-lg transition cursor-pointer"
+          className="flex items-center font-light gap-3 px-4 py-3  hover:bg-gray-200 hover:rounded-lg transition cursor-pointer"
         >
           {menuItem.icon}
           <span className="text-sm font-medium">{menuItem.label}</span>
@@ -53,13 +53,12 @@ function MenuItem({setOpen}) {
 function SideBar({open,setOpen}) {
   const navigate = useNavigate();
   return (
-    <div className="fixed top-0 left-0 h-screen w-64 bg-black text-white hidden lg:flex flex-col border-r border-white">
-
-      <Sheet open={open} onOpenChange={setOpen} className='bg-black text-white'>
-        <SheetContent side="left" className='w-64 bg-black text-white'>
-          <div className="flex bg-black text-white flex-col h-full">
+    <>
+      <Sheet open={open} onOpenChange={setOpen}>
+        <SheetContent side="left" className='w-64 '>
+          <div className="flex flex-col h-full">
             <SheetHeader className='border-b'>
-              <SheetTitle className='bg-black flex justify-center text-[1.3rem] font-light items-center gap-3 mb-2 text-white'><ChartNoAxesCombined size={30} /> Admin Panel</SheetTitle>
+              <SheetTitle className=' flex justify-center text-[1.3rem] font-light items-center gap-3 mb-2 '><ChartNoAxesCombined size={30} /> Admin Panel</SheetTitle>
             </SheetHeader>
             <MenuItem setOpen={setOpen}/>
           </div>
@@ -81,7 +80,7 @@ function SideBar({open,setOpen}) {
         {/* Menu Items */}
         <MenuItem />
       </aside>
-    </div>
+    </>
   );
 }
 

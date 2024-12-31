@@ -16,6 +16,7 @@ function CommonForm({
   setFormData,
   onSubmit,
   buttonText,
+  isBtnDis
 }) {
   function renderInputBasedOnComponentType(controlItem) {
     let element = null;
@@ -119,6 +120,7 @@ function CommonForm({
       <Button
         className="mt-2 w-full  bg-white text-black hover:bg-zinc-200"
         type="submit"
+        disabled={isBtnDis}
       >
         {buttonText || "submit"}
       </Button>

@@ -31,7 +31,7 @@ function App() {
 
   if(isLoading){
     return(
-      <Skeleton className="w-full h-screen bg-black" />
+      <Skeleton className="w-full h-screen" />
 
     )
   }
