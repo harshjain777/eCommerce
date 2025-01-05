@@ -24,24 +24,26 @@ function MenuItems(){
   </nav>
 }
 
+
+
 function HeaderRightContent(){
+
   const {user} = useSelector(state=>state.auth)
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const handleLogout = () => {
     dispatch(logoutUser())
   }
 
   return <div className="flex lg:items-center lg:flex-row flex-col gap-4">
-    <Button>
-    <ShoppingCart />
+    <Button onClick={()=>navigate('/shop/account')} className='bg-white w-4 hover:bg-white' >
+    <ShoppingCart className='bg-white text-black hover:text-zinc-500 ' />
     <span className='sr-only'>user cart</span>
     </Button>
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Avatar className='bg-black'>
-          <AvatarFallback className='bg-black text-white px-2 font-thin capitalize'>{user?.userName[0]}</AvatarFallback>
+        <Avatar className=''>
+          <AvatarFallback className= ' border rounded-md p-1 px-2 font-bold capitalize'>{user?.userName[0]}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent side='right' className='w-56'  >
@@ -49,7 +51,7 @@ function HeaderRightContent(){
         <DropdownMenuSeparator></DropdownMenuSeparator>
         <DropdownMenuItem  onClick={()=>navigate('/shop/account')}><User className='mr-2 h-4 w-4' />Account</DropdownMenuItem>
         <DropdownMenuSeparator></DropdownMenuSeparator>
-        <DropdownMenuItem><LogOut className='mr-2 h-4 w-4' onClick={handleLogout}/>Logout</DropdownMenuItem>
+        <DropdownMenuItem onClick={handleLogout}><LogOut className='mr-2 h-4 w-4' />Logout</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   </div>
